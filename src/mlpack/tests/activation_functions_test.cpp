@@ -21,6 +21,7 @@
 #include <mlpack/methods/ann/activation_functions/softplus_function.hpp>
 #include <mlpack/methods/ann/activation_functions/swish_function.hpp>
 #include <mlpack/methods/ann/activation_functions/hard_sigmoid_function.hpp>
+#include <mlpack/methods/ann/activation_functions/sin_function.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include "test_tools.hpp"
@@ -468,6 +469,25 @@ BOOST_AUTO_TEST_CASE(IdentityFunctionTest)
 
   CheckActivationCorrect<IdentityFunction>(activationData, activationData);
   CheckDerivativeCorrect<IdentityFunction>(activationData, desiredDerivatives);
+}
+
+/**
+ * Basic test of the Sin function.
+ */
+BOOST_AUTO_TEST_CASE(SinFunctionTest)
+{
+  const arma::colvec desiredActivations("-0.90929742683 -0.05837414343 \
+                                         -0.97753011767 0.32495572773 \
+                                          0.84147098481 -0.84147098481 \
+                                          0.90929742683 0");
+
+  const arma::colvec desiredDerivatives("0.61430028212 0.99829671344 \
+                                         0.55907207646 0.94766486201 \
+                                         0.66636674539 0.66636674539 \
+                                         0.61430028212 1");
+
+  CheckActivationCorrect<SinFunction>(activationData, desiredActivations);
+  CheckDerivativeCorrect<SinFunction>(desiredActivations, desiredDerivatives);
 }
 
 /**
