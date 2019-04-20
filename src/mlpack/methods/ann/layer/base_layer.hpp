@@ -20,6 +20,7 @@
 #include <mlpack/methods/ann/activation_functions/tanh_function.hpp>
 #include <mlpack/methods/ann/activation_functions/softplus_function.hpp>
 #include <mlpack/methods/ann/activation_functions/hard_sigmoid_function.hpp>
+#include <mlpack/methods/ann/activation_functions/sin_function.hpp>
 
 namespace mlpack {
 namespace ann /** Artificial Neural Network. */ {
@@ -182,6 +183,17 @@ template <
     typename OutputDataType = arma::mat
 >
 using HardSigmoidLayer = BaseLayer<
+    ActivationFunction, InputDataType, OutputDataType>;
+
+/**
+ * Standard Sinusoidal-Layer using the Sinusoidal activation function.
+ */
+template <
+    class ActivationFunction = SinFunction,
+    typename InputDataType = arma::mat,
+    typename OutputDataType = arma::mat
+>
+using SinLayer = BaseLayer<
     ActivationFunction, InputDataType, OutputDataType>;
 
 } // namespace ann
