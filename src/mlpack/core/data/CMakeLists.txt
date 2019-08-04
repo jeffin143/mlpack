@@ -27,9 +27,9 @@ set(SOURCES
   confusion_matrix.hpp
   one_hot_encoding.hpp
   one_hot_encoding_impl.hpp
-  bow_encoding.hpp
-  bow_encoding_impl.hpp
-  tokenizer/char_split.hpp
+  string_encoding.hpp
+  string_encoding_dictionary.hpp
+  string_encoding_impl.hpp
 )
 
 # add directory name to sources
@@ -41,6 +41,8 @@ endforeach()
 # Add subdirectories.
 add_subdirectory(imputation_methods)
 add_subdirectory(map_policies)
+add_subdirectory(string_encoding_policies)
+add_subdirectory(tokenizers)
 
 # Append sources (with directory name) to list of all mlpack sources (used at
 # parent scope).
