@@ -55,8 +55,8 @@ class BagOfWordsEncodingPolicy
   * @param output Output matrix to store the encoded results.
   * @param datasetSize The number of strings in the input dataset.
   * @param maxNumTokens The maximum number of tokens in the strings of the 
-                        input dataset.
-  * @param dictionarySize The size of the dictionary (not used).
+                        input dataset (not used).
+  * @param dictionarySize The size of the dictionary.
   */
   static void InitMatrix(std::vector<std::vector<size_t> >& output,
                          size_t datasetSize,
@@ -67,7 +67,7 @@ class BagOfWordsEncodingPolicy
   }
 
   /** 
-  * The function performs the dictionary encoding algorithm i.e. it writes
+  * The function performs the bagofwords encoding algorithm i.e. it writes
   * the encoded token to the ouput.
   *
   * @param output Output matrix to store the encoded results (sp_mat or mat).
@@ -83,11 +83,11 @@ class BagOfWordsEncodingPolicy
   }
 
   /** 
-  * The function performs the dictionary encoding algorithm i.e. it writes
+  * The function performs the bagofwords encoding algorithm i.e. it writes
   * the encoded token to the ouput.
   * Overload function to accepted vector<vector<size_t>> as output type.
   *
-  * @param output Output matrix to store the encoded results (sp_mat or mat).
+  * @param output Output matrix to store the encoded results.
   * @param value The encoded token.
   * @param row The row number at which the encoding is performed.
   * @param col The row token number at which the encoding is performed.
