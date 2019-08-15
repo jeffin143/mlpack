@@ -28,6 +28,9 @@ set(SOURCES
   confusion_matrix.hpp
   one_hot_encoding.hpp
   one_hot_encoding_impl.hpp
+  tokenizer/char_split.hpp
+  tokenizer/split_by_char.hpp
+  word_2_vec.hpp  
 )
 
 # add directory name to sources

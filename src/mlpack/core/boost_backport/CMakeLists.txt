@@ -17,6 +17,9 @@ set(SOURCES
   vector.hpp
   collections_load_imp.hpp
   collections_save_imp.hpp
+  string_view.hpp
+  string_view_fwd.hpp
+  boost_backport_string_view.hpp
 )
 
 # add directory name to sources
