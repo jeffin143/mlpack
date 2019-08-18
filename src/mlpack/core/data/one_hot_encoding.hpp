@@ -28,9 +28,9 @@ namespace data {
  * @param labelsIn Input labels of arbitrary datatype.
  * @param output Binary matrix.
  */
-template<typename eT, typename RowType>
+template<typename OutputType, typename RowType>
 void OneHotEncoding(const RowType& labelsIn,
-                    arma::Mat<eT>& output);
+                    OutputType& output);
 
 } // namespace data
 } // namespace mlpack

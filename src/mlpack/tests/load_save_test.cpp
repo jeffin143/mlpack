@@ -930,6 +930,67 @@ BOOST_AUTO_TEST_CASE(OneHotEncodingTest)
 }
 
 /**
+ * Test one hot encoding for sp_mat.
+ */
+BOOST_AUTO_TEST_CASE(OneHotSpMatEncodingTest)
+{
+  arma::SpMat<size_t> matrix;
+  matrix = "1 0;"
+           "0 1;"
+           "1 0;"
+           "1 0;"
+           "1 0;"
+           "1 0;"
+           "0 1;"
+           "1 0;";
+// Output matrix to save onehotencoding results.
+  arma::SpMat<size_t> output;
+  arma::irowvec labels("-1 1 -1 -1 -1 -1 1 -1");
+  data::OneHotEncoding(labels, output);
+
+  BOOST_REQUIRE_EQUAL(matrix.n_cols, output.n_cols);
+  BOOST_REQUIRE_EQUAL(matrix.n_rows, output.n_rows);
+  for (size_t i = 0; i < output.n_rows; i++)
+  {
+    for (size_t j = 0 ; j < output.n_cols; j++)
+    {
+      BOOST_REQUIRE_EQUAL(output(i, j), matrix(i, j));
+    }
+  }
+}
+
+/**
+ * Test one hot encoding for mat as input
+ */
+BOOST_AUTO_TEST_CASE(OneHotMatInputEncodingTest)
+{
+  arma::Mat<size_t> matrix;
+  matrix = "1 0;"
+           "0 1;"
+           "1 0;"
+           "1 0;"
+           "1 0;"
+           "1 0;"
+           "0 1;"
+           "1 0;";
+// Output matrix to save onehotencoding results.
+  arma::Mat<size_t> output;
+  arma::Mat<size_t>input = {
+    { 1, 2 , 1},
+    { 2, 3, 3},
+    { 1, 4, 1}
+  };
+  arma::irowvec row(2, 1);
+  data::OneHotEncoding(input, row, output);
+  std::cout<<"input is \n"<<input<<"\n";
+  std::cout<<"output is \n"<<output<<"\n";
+
+  // BOOST_REQUIRE_EQUAL(matrix.n_cols, output.n_cols);
+  // BOOST_REQUIRE_EQUAL(matrix.n_rows, output.n_rows);
+  // CheckMatrices(output, matrix);
+}
+
+/**
  * Test normalization of labels.
  */
 BOOST_AUTO_TEST_CASE(NormalizeLabelSmallDatasetTest)
